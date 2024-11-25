@@ -4,13 +4,12 @@ import router from "@/router/router.ts";
 import { NIcon, NMessageProvider, NDialogProvider } from "naive-ui";
 import type { MenuOption } from "naive-ui";
 import {
-  SettingsOutline,
-  RocketOutline,
+  EarthOutline,
+  BookOutline,
   CaretDownOutline,
   SunnyOutline,
   MoonOutline,
-  PersonCircleOutline,
-  ColorFilterOutline
+  PersonCircleOutline
 } from "@vicons/ionicons5";
 
 export default defineComponent({
@@ -42,16 +41,8 @@ export default defineComponent({
       collapsed.value = false;
     }
 
-    function handleRouterToTemplate1() {
-      router.push("/template1");
-    }
-
-    function handleRouterToTemplate2() {
-      router.push("/template2");
-    }
-
-    function handleRouterToTemplate3() {
-      router.push("/template3");
+    function handleRouterToHome() {
+      router.push("/home");
     }
 
     const buttonTheme = () => {
@@ -60,19 +51,30 @@ export default defineComponent({
 
     const menuOptions: MenuOption[] = [
       {
-        label: "Template 01",
-        key: "template1",
-        onClick: handleRouterToTemplate1
+        label: 'Home',
+        key: 'home',
+        onclick: handleRouterToHome
       },
       {
-        label: "Template 02",
-        key: "template2",
-        onClick: handleRouterToTemplate2
-      },
-      {
-        label: "Template 03",
-        key: "template3",
-        onClick: handleRouterToTemplate3
+        label: 'Templates',
+        key: 'templates',
+        children: [
+          {
+            label: 'Template 01',
+            key: 'template1',
+            href: '/template1'
+          },
+          {
+            label: 'Template 02',
+            key: 'template2',
+            href: '/template2'
+          },
+          {
+            label: 'Template 03',
+            key: 'template3',
+            href: '/template3'
+          }
+        ]
       },
       {
         label: "Theme",
@@ -101,12 +103,10 @@ export default defineComponent({
     };
 
     const renderMenuIcon = (option: MenuOption) => {
-      if (option.key === "template1") {
-        return h(NIcon, null, { default: () => h(SettingsOutline) });
-      } else if (option.key === "template2") {
-        return h(NIcon, null, { default: () => h(RocketOutline) });
-      } else if (option.key === "template3") {
-        return h(NIcon, null, { default: () => h(ColorFilterOutline) });
+      if (option.key === "home") {
+        return h(NIcon, null, { default: () => h(EarthOutline) });
+      } else if (option.key === "templates") {
+        return h(NIcon, null, { default: () => h(BookOutline) });
       } else if (option.key === "theme") {
         return h(NIcon, null, {
           default: () => (isDarkTheme.value ? h(SunnyOutline) : h(MoonOutline)),
@@ -141,6 +141,22 @@ export default defineComponent({
       <n-layout has-sider>
         <n-layout-sider bordered collapse-mode="width" :collapsed-width="64" :width="240" :collapsed="collapsed"
           show-trigger @collapse="handleCollapse" @expand="handleExpand">
+          <svg style="margin-top: 18px" xmlns="http://www.w3.org/2000/svg" width="50" height="40" viewBox="0 0 50 40"
+            fill="none">
+            <g clip-path="url(#clip0_914_712)">
+              <text x="5" y="30" font-family="Arial, sans-serif" font-size="30" font-weight="bold" fill="#008C77">
+                M
+              </text>
+              <text x="25" y="30" font-family="Arial, sans-serif" font-size="30" font-weight="bold" fill="#214B63">
+                G
+              </text>
+            </g>
+            <defs>
+              <clipPath id="clip0_914_712">
+                <rect width="50" height="40" fill="white"></rect>
+              </clipPath>
+            </defs>
+          </svg>
           <n-menu :collapsed="collapsed" :collapsed-width="64" :collapsed-icon-size="22" :options="menuOptions"
             :render-label="renderMenuLabel" :render-icon="renderMenuIcon" :expand-icon="expandIcon" />
         </n-layout-sider>
