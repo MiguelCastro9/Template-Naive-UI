@@ -23,13 +23,12 @@
     "types": ["node"],
     "baseUrl": ".",
     "paths": {
-      "@/": ["src/"],
-      "@/views/": ["src/views/"],
-      "@environments/": ["src/environments/"],
-      "@/types/": ["src/types/"],
-      "@/services/": ["src/services/"]
+      "@/*": ["src/*"],
+      "@environments/*": ["src/environments/*"],
+      "@/types/*": ["src/types/*"],
+      "@/services/*": ["src/services/*"]
     }
   },
-  "include": ["src/*/.ts", "src/*/.tsx", "src/*/.vue"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
