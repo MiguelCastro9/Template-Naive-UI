@@ -53,7 +53,7 @@ export default defineComponent({
       {
         label: 'Home',
         key: 'home',
-        onclick: handleRouterToHome
+        onClick: handleRouterToHome
       },
       {
         label: 'Templates',

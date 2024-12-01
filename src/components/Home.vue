@@ -12,7 +12,7 @@ onMounted(() => { });
         </div>
     </nav>
     <div class="painel-container">
-        <p>home</p>
+        <h4>Content template home</h4>
     </div>
 </template>
 
@@ -37,5 +37,6 @@ onMounted(() => { });
     justify-content: space-between;
     align-items: center;
     margin-top: 20px;
+    margin-left: 50px;
 }
 </style>
